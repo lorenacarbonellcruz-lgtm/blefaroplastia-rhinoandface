@@ -1,0 +1,243 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   RHINO & FACE — LANDING PAGE
+   Design: Swiss Typographic Style + Medical Luxury
+   Palette: Warm white #F7F4F0, Deep black #0D0D0D, Terracotta #C4856A
+   Fonts: Space Mono (todo — display, body, labels) — identidad de marca
+   ============================================================ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 0px;
+  --background: oklch(0.975 0.005 60);
+  --foreground: oklch(0.1 0.005 60);
+  --card: oklch(0.99 0.003 60);
+  --card-foreground: oklch(0.1 0.005 60);
+  --popover: oklch(0.99 0.003 60);
+  --popover-foreground: oklch(0.1 0.005 60);
+  --primary: oklch(0.1 0.005 60);
+  --primary-foreground: oklch(0.975 0.005 60);
+  --secondary: oklch(0.94 0.008 60);
+  --secondary-foreground: oklch(0.1 0.005 60);
+  --muted: oklch(0.94 0.008 60);
+  --muted-foreground: oklch(0.45 0.01 60);
+  --accent: oklch(0.62 0.1 40);
+  --accent-foreground: oklch(0.975 0.005 60);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.88 0.008 60);
+  --input: oklch(0.88 0.008 60);
+  --ring: oklch(0.62 0.1 40);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  a[href],
+  select:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+      max-width: 1400px;
+    }
+  }
+
+  /* Typography utilities — Space Mono throughout */
+  .font-display {
+    font-family: 'Space Mono', monospace;
+  }
+
+  .font-mono-label {
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* Section label style — matches Rhino & Face brand */
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: oklch(0.45 0.01 60);
+  }
+
+  /* CTA Button — black/white inversion on hover */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2.5rem;
+    background: oklch(0.1 0.005 60);
+    color: oklch(0.975 0.005 60);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid oklch(0.1 0.005 60);
+    transition: background 0.2s ease, color 0.2s ease;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover {
+    background: transparent;
+    color: oklch(0.1 0.005 60);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2.5rem;
+    background: transparent;
+    color: oklch(0.1 0.005 60);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid oklch(0.1 0.005 60);
+    transition: background 0.2s ease, color 0.2s ease;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    background: oklch(0.1 0.005 60);
+    color: oklch(0.975 0.005 60);
+  }
+
+  /* Thin horizontal rule */
+  .divider {
+    height: 1px;
+    background: oklch(0.88 0.008 60);
+    width: 100%;
+  }
+
+  /* Fade-in animation for scroll reveal */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .bleph-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .bleph-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Terracotta accent color */
+  .text-terracotta {
+    color: oklch(0.62 0.1 40);
+  }
+
+  .bg-terracotta {
+    background-color: oklch(0.62 0.1 40);
+  }
+
+  .border-terracotta {
+    border-color: oklch(0.62 0.1 40);
+  }
+
+  /* Input styles */
+  .input-field {
+    width: 100%;
+    padding: 0.875rem 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid oklch(0.7 0.008 60);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: oklch(0.1 0.005 60);
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .input-field::placeholder {
+    color: oklch(0.6 0.008 60);
+  }
+
+  .input-field:focus {
+    border-bottom-color: oklch(0.1 0.005 60);
+  }
+
+  .input-field option {
+    background: oklch(0.975 0.005 60);
+    color: oklch(0.1 0.005 60);
+  }
+}
